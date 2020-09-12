@@ -30,3 +30,7 @@ export function getDatabaseConfig(): IDataConfiguration {
 export function getServerConfigs(): IServerConfigurations {
   return configs.get("server");
 }
+
+export function getServiceConfigs() {
+  return configs.get("services");
+}

@@ -17,3 +17,23 @@ export const NODE_ENV = {
     STAGING: "staging",
     PRODUCTION: "production"
 };
+
+export const HTTP_METHODS = {
+    GET: "GET",
+    POST: "POST",
+    PUT: "PUT",
+    DELETE: "DELETE"
+};
+
+export const HTTP_HEADERS = {
+    AUTH: 'authorization',
+    CLIENT_REQUEST: 'Client-Request',
+    CONTENT_TYPE: 'Content-Type'
+};
+
+export const TRACING = {
+    TRACER_SESSION: 'TRACER_SESSION',
+    TRANSACTION_ID: 'x-request-id'
+};
+
+export const CLS_NAMESPACE = 'requestContext';

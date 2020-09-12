@@ -23,7 +23,8 @@ export default function (
     path: "/products/{id}",
     options: {
       handler: productController.getById,
-      auth: "jwt",
+      //auth: "jwt",
+      auth: false,
       tags: ["api", "products"],
       description: "Get product by id.",
       validate: {

@@ -24,7 +24,6 @@ const start = async () => {
     // Starting Application Server
     const serverConfigs = Configs.getServerConfigs();
 
-    //const server = await Server.init(config, db);
     const server = await Server.init(serverConfigs);
     await server.start();
     console.log(`server started at ${server.info.host}:${server.info.port}`);
