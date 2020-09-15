@@ -13,7 +13,6 @@ export default class ProductService extends BaseService implements IProductServi
 
     constructor(@inject(TYPES.IProductRepository) repository: IProductRepository) {
         super(repository);
-        
     }
 
     public async retrieve(filter?: any, sortBy?: any, page?: number, pageSize?: number) {
@@ -34,10 +33,7 @@ export default class ProductService extends BaseService implements IProductServi
                 searchAt: new Date().toISOString()
             }
             try {
-                let recordSearchProductResult = await HttpClient.post(analyticsServiceURI, "/analytics/recordSearchProduct", searchProductPayload, {auth: true})
-                .catch((err) => {
-                    console.log(JSON.stringify(err));
-                })
+                let recordSearchProductResult = await HttpClient.post(analyticsServiceURI, "/analytics/recordSearchProduct", searchProductPayload, {auth: true});
             } catch (error) {
                 console.log(JSON.stringify(error));
             }

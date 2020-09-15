@@ -13,7 +13,7 @@ import IProductRepository from "../product/IProductRepository";
 import ProductRepository from "../product/ProductRepository";
 
 let container = new Container();
-container.bind<IProductRepository>(TYPES.IProductRepository).to(ProductRepository)
+container.bind<IProductRepository>(TYPES.IProductRepository).to(ProductRepository);
 container.bind<IProductService>(TYPES.IProductService).to(ProductService);
 container.bind<IProductController>(TYPES.IProductController).to(ProductController);
 container.bind<IUserService>(TYPES.IUserService).to(UserService);

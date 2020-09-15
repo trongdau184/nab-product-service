@@ -5,15 +5,10 @@ import IProductController from "./IProductController";
 import TYPES from "../common/Types";
 import * as ProductValidator from "./ProductValidator";
 import * as ProductResponse from "./ProductResponse";
-import { Schema } from "mongoose";
-import { join } from "path";
 import * as Validators from "../../core/common/Validators"
-// import { jwtValidator } from "../users/user-validator";
-// import { IServerConfigurations } from "../../configurations";
 
 export default function (
   server: Hapi.Server,
-  //configs: IServerConfigurations,
 ) {
   const productController = iocContainer.get<IProductController>(TYPES.IProductController);
   server.bind(productController);
@@ -23,8 +18,7 @@ export default function (
     path: "/products/{id}",
     options: {
       handler: productController.getById,
-      //auth: "jwt",
-      auth: false,
+      auth: "jwt",
       tags: ["api", "products"],
       description: "Get product by id.",
       validate: {
