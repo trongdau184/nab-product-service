@@ -55,9 +55,11 @@ npm test
 
 **Sequence diagram**
 * Search sequence diagram
+
 ![Search product sequence diagram](https://github.com/trongdau184/nab-product-service/blob/master/Search%20Product%20Diagram.png?raw=true)
 
 * View product sequence diagram
+
 ![View product sequence diagram](https://github.com/trongdau184/nab-product-service/blob/master/View-product-diagram.png?raw=true)
 
 **Code folder structure**
