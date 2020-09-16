@@ -47,7 +47,7 @@ npm test
 
         To specify the advance search on a field, the client puts the the query param with format: {field__operator}={value} to the query string
         For ex: if the client would like to get the products which have price greater than or equals 1,000,000, the client can add "price__gte=1000000" to the query string.
-    * Sort: Client is able to specify the sort field and sort type (ASC|DESC) with format: {fieldname}:{asc|desc} in the query string.
+        * Sort: Client is able to specify the sort field and sort type (ASC|DESC) with format: {fieldname}:{asc|desc} in the query string.
 
 * User API: for demonstration purpose, the service provides the login API which returns the JWT token (not validate given username/input). The token then will be used in Authorization Header in the Request to protected APIs.
 
@@ -55,9 +55,22 @@ npm test
 
 **Sequence diagram**
 * Search sequence diagram
-
+```mermaid
+sequenceDiagram
+Client ->> Product Service: Search Products
+Product Service ->> Analytics Service: Record Product Search
+Analytics Service ->> MongoDB: Save Product Search Filters
+Product Service ->> Client: Return List of products
+```
 
 * View product sequence diagram
+```mermaid
+sequenceDiagram
+Client ->> Product Service: Get product detail
+Product Service ->> Analytics Service: Record a View on Product
+Analytics Service ->> MongoDB: Save a View on Product
+Product Service ->> Client: Return Product Detail
+```
 
 **Code folder structure**
 ```
