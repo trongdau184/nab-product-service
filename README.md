@@ -22,7 +22,7 @@ npm test
 **Features**
 * Product APIs: Create, Update, Retrieve and Search Products, Get Product Detail and Delete Product
     * Retrieve and Search Product API:
-        * Support search on any fields of products
+        * Support search on any fields of the product
         * Advance search: The search product API not only supports "equal" operator but also other searching operators. The Search Operator supported as listed as below:
 
             | Search Operator   | Description   |
@@ -55,22 +55,10 @@ npm test
 
 **Sequence diagram**
 * Search sequence diagram
-```seq
-Client -> Product Service: Search Products
-Product Service -> Analytics Service: Record Product Search
-Analytics Service -> MongoDB: Save Product Search Filters
-Product Service -> Client: Return List of products
-```
---
-![Diagram](https://github.com/trongdau184/nab-product-service/blob/master/Search%20Product%20Diagram.png?raw=true)
+![Search product sequence diagram](https://github.com/trongdau184/nab-product-service/blob/master/Search%20Product%20Diagram.png?raw=true)
 
 * View product sequence diagram
-```seq
-Client -> Product Service: Get product detail
-Product Service -> Analytics Service: Record a View on Product
-Analytics Service -> MongoDB: Save a View on Product
-Product Service -> Client: Return Product Detail
-```
+![View product sequence diagram](https://github.com/trongdau184/nab-product-service/blob/master/View-product-diagram.png?raw=true)
 
 **Code folder structure**
 ```
@@ -106,7 +94,7 @@ Product Service -> Client: Return Product Detail
 ```
 
 **Software development principles, pattern & practices**
-* 3 Layers Pattern: Controller - Service - Repository
+* 3 Layers Pattern: Controler - Service - Repository
 * Inversion of control: make components loose coupling
 * Highly reusable: Quickly to add new Rest API for resource with basic CRUD: Developer just needs to create route file, define the new Controller, create new Service class which extends BaseService, create new Repository class which extends BaseRepository, and need validators, DTOs
 * SOLID, KISS
