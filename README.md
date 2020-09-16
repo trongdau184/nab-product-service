@@ -11,8 +11,8 @@ The most benefit of micro-services architecture is ease of scaling, since the se
 * Internal Services:
     * Product Service: provide the CRUD APIs for product
     * Identity Service: login/authenticate user and issue a token (to keep it simple for demonstrating purpose, the current implementation of login/authenticate is currently put in Product Service)
-    * Analytics Service: record filters on the products, view on the products then aggregate the data to provide marketing reports such as Top Searched Products, Top Searched Brand, Top Viewed Product in the specific date ranges.
-    * Analytics Worker: execute marketing reports which might take a long time due to the long date ranges. For ex: the user would to see top searched product in 1 month Report which might take long time to calculate due to the numbers of search records in 1 month.
+    * Analytics Service: record filters on the products, view on the products then aggregate the data to provide marketing reports such as Top Searching Products, Top Searching Brand, Top Viewed Product in the specific date ranges.
+    * Analytics Worker: execute marketing reports which might take a long time due to the given long date ranges. For ex: the user would to see top searching products in 1 month Report which might take long time to calculate due to the numbers of search records in 1 month.
 * Third parties:
     * Amazon SQS:  Message Queue service
     * Amazon S3: Storage service to store the product images
@@ -108,7 +108,7 @@ The most benefit of micro-services architecture is ease of scaling, since the se
 
 **Frameworks & Libraries**
 * Hapi: NodeJS API framework
-* Boom: Generate Htpp friendly error objects
+* Boom: Generate Http friendly error objects
 * Good: Hapi process monitoring
 * hapi-auth-jwt2: hapi authentication plugin uses JWT token
 * Joi: request payload or model validation

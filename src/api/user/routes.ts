@@ -8,7 +8,6 @@ import * as UserResponse from "./UserResponse";
 
 export default function (
     server: Hapi.Server,
-    //configs: IServerConfigurations,
   ) {
     const controller = iocContainer.get<IUserController>(TYPES.IUserController);
     server.bind(controller);

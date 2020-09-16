@@ -34,5 +34,4 @@ const start = async () => {
 };
 
 // Start the server
-//start({ config: serverConfigs, db: database });
 start();
