@@ -62,7 +62,7 @@ Analytics Service -> MongoDB: Save Product Search Filters
 Product Service -> Client: Return List of products
 ```
 --
-![Diagram]https://github.com/trongdau184/nab-product-service/blob/master/Search%20Product%20Diagram.png
+![Diagram]Search%20Product%20Diagram.png
 
 * View product sequence diagram
 ```seq
