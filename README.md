@@ -2,22 +2,34 @@
 
 Product Service provides REST APIs for Products
 
-**Installation**
-```bash
-npm install
-```
-**Run**
+**High Level Architecture**
 
-* Start the service:
-```bash
-npm start
-```
-The service runs on URL: http://localhost:5000
+![High Level Architecture diagram](https://github.com/trongdau184/nab-product-service/blob/master/High-level-architect-diagram.png?raw=true)
 
-* Test:
-```bash
-npm test
-```
+The micro-services architecture will be applied for E-Commerce system, in this architecture, each features/module are divided into small and independent services which will handle a piece of business module or perform specific tasks. Since each service is independent, they communicate together via the HTTP Request (REST API) or Message Queue (Send/Receive or Public/Subscribe). 
+The most benefit of micro-services architecture is ease of scaling, since the services are divided into micro, we easily scale up a particular service based on the number of incoming requests to it.
+* Internal Services:
+    * Product Service: provide the CRUD APIs for product
+    * Identity Service: login/authenticate user and issue a token (to keep it simple for demonstrating purpose, the current implementation of login/authenticate is currently put in Product Service)
+    * Analytics Service: record filters on the products, view on the products then aggregate the data to provide marketing reports such as Top Searched Products, Top Searched Brand, Top Viewed Product in the specific date ranges.
+    * Analytics Worker: execute marketing reports which might take a long time due to the long date ranges. For ex: the user would to see top searched product in 1 month Report which might take long time to calculate due to the numbers of search records in 1 month.
+* Third parties:
+    * Amazon SQS:  Message Queue service
+    * Amazon S3: Storage service to store the product images
+    * MongoDB cluster: Database cluster.
+* Deployment tool:
+    * Docker: packaging the container to image
+    * Kubernetes: Container Management. The services is deployed to Worker Nodes in the Kubernetes cluster
+    * Amazon Elastic Kubernetes Service (Amazon EKS): Deploy Kubernetes cluster to Amazon Web Service.
+
+**Sequence diagrams**
+* Search sequence diagram
+
+![Search product sequence diagram](https://github.com/trongdau184/nab-product-service/blob/master/Search%20Product%20Diagram.png?raw=true)
+
+* View product sequence diagram
+
+![View product sequence diagram](https://github.com/trongdau184/nab-product-service/blob/master/View-product-diagram.png?raw=true)
 
 **Features**
 * Product APIs: Create, Update, Retrieve and Search Products, Get Product Detail and Delete Product
@@ -47,20 +59,11 @@ npm test
 
         To specify the advance search on a field, the client puts the the query param with format: {field__operator}={value} to the query string
         For ex: if the client would like to get the products which have price greater than or equals 1,000,000, the client can add "price__gte=1000000" to the query string.
-        * Sort: Client is able to specify the sort field and sort type (ASC|DESC) with format: {fieldname}:{asc|desc} in the query string.
+        * Sort: Client is able to specify the sort field and sort type (ASC|DESC) with format: {field}:{asc|desc} in the query string. For ex: add "name:asc" to query string to sort product by name, ascending
 
 * User API: for demonstration purpose, the service provides the login API which returns the JWT token (not validate given username/input). The token then will be used in Authorization Header in the Request to protected APIs.
 
-* API documenentation url: http://localhost:5000/documentation
-
-**Sequence diagram**
-* Search sequence diagram
-
-![Search product sequence diagram](https://github.com/trongdau184/nab-product-service/blob/master/Search%20Product%20Diagram.png?raw=true)
-
-* View product sequence diagram
-
-![View product sequence diagram](https://github.com/trongdau184/nab-product-service/blob/master/View-product-diagram.png?raw=true)
+* API documentation url: http://localhost:5000/documentation
 
 **Code folder structure**
 ```
@@ -94,11 +97,13 @@ npm test
 ├── server.ts
 └── test
 ```
+* Project structure followed "Folder by feature" structure which organizing projects into several folders with each folder representing a single feature.
+* Core folder can be separated as a npm module which is used by the services.
 
 **Software development principles, pattern & practices**
-* 3 Layers Pattern: Controler - Service - Repository
+* 3 Layers Pattern: Controller - Service - Repository
 * Inversion of control: make components loose coupling
-* Highly reusable: Quickly to add new Rest API for resource with basic CRUD: Developer just needs to create route file, define the new Controller, create new Service class which extends BaseService, create new Repository class which extends BaseRepository, and need validators, DTOs
+* Highly reusable: Quickly to add new Rest API for resource with basic CRUD. Developer just needs to create route file, define the new Controller, create new Service class which extends BaseService class without adding any code, create new Repository class which extends BaseRepository class without adding any code, and add needed validators, DTOs. That's all.
 * SOLID, KISS
 
 **Frameworks & Libraries**
@@ -123,6 +128,23 @@ Product
 | color     | string    |
 | brand     | string    |
 | category  | string    |
+
+**Installation**
+```bash
+npm install
+```
+**Run**
+
+* Start the service:
+```bash
+npm start
+```
+The service runs on URL: http://localhost:5000
+
+* Test:
+```bash
+npm test
+```
 
 **Curl commands to verify APIs**
 * Login to get the token
@@ -158,6 +180,5 @@ Call login API first to get the token, then set it to the "authorization" in the
 curl -X DELETE "http://localhost:5000/products/5f619302f56b8419e5e45548" -H  "accept: application/json" -H  "authorization: token"
 ```
 
-**Improvements**
-
+**Future Improvements**
 The User login/authenticate API should be separated to the Identity Service
