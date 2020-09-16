@@ -104,7 +104,7 @@ Product Service -> Client: Return Product Detail
 ```
 
 **Software development principles, pattern & practices**
-* 3 Layers Pattern: Controler - Service - Repository
+* 3 Layers Pattern: Controller - Service - Repository
 * Inversion of control: make components loose coupling
 * Highly reusable: Quickly to add new Rest API for resource with basic CRUD: Developer just needs to create route file, define the new Controller, create new Service class which extends BaseService, create new Repository class which extends BaseRepository, and need validators, DTOs
 * SOLID, KISS
