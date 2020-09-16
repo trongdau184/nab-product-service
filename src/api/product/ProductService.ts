@@ -35,6 +35,7 @@ export default class ProductService extends BaseService implements IProductServi
             try {
                 let recordSearchProductResult = await HttpClient.post(analyticsServiceURI, "/analytics/recordSearchProduct", searchProductPayload, {auth: true});
             } catch (error) {
+                // Just catch to log the error, still return the result
                 console.log(JSON.stringify(error));
             }
         }
@@ -53,6 +54,7 @@ export default class ProductService extends BaseService implements IProductServi
         try {
             let recordViewProductResult = await HttpClient.post(analyticsServiceURI, "/analytics/recordViewProduct", viewProductPayload, {auth: true});
         } catch (error) {
+            // Just catch to log the error, still return the result
             console.log(JSON.stringify(error));
         }
         return product;
