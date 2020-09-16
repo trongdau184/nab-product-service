@@ -57,8 +57,8 @@ The most benefit of micro-services architecture is ease of scaling, since the se
             | nin               | item is not in a given array  |
             | range             | field is a given range (date, number) |
 
-        To specify the advance search on a field, the client puts the the query param with format: {field__operator}={value} to the query string
-        For ex: if the client would like to get the products which have price greater than or equals 1,000,000, the client can add "price__gte=1000000" to the query string.
+            To specify the advance search on a field, the client puts the the query param with format: {field__operator}={value} to the query string
+            For ex: if the client would like to get the products which have price greater than or equals 1,000,000, the client can add "price__gte=1000000" to the query string.
         * Sort: Client is able to specify the sort field and sort type (ASC|DESC) with format: {field}:{asc|desc} in the query string. For ex: add "name:asc" to query string to sort product by name, ascending
 
 * User API: for demonstration purpose, the service provides the login API which returns the JWT token (not validate given username/input). The token then will be used in Authorization Header in the Request to protected APIs.
@@ -98,7 +98,7 @@ The most benefit of micro-services architecture is ease of scaling, since the se
 └── test
 ```
 * Project structure followed "Folder by feature" structure which organizing projects into several folders with each folder representing a single feature.
-* Core folder can be separated as a npm module which is used by the services.
+* The "core" folder can be separated as a npm module which is used by the services.
 
 **Software development principles, pattern & practices**
 * 3 Layers Pattern: Controller - Service - Repository
@@ -181,4 +181,5 @@ curl -X DELETE "http://localhost:5000/products/5f619302f56b8419e5e45548" -H  "ac
 ```
 
 **Future Improvements**
+
 The User login/authenticate API should be separated to the Identity Service
