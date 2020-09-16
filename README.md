@@ -55,21 +55,19 @@ npm test
 
 **Sequence diagram**
 * Search sequence diagram
-```mermaid
-sequenceDiagram
-Client ->> Product Service: Search Products
-Product Service ->> Analytics Service: Record Product Search
-Analytics Service ->> MongoDB: Save Product Search Filters
-Product Service ->> Client: Return List of products
+```seq
+Client -> Product Service: Search Products
+Product Service -> Analytics Service: Record Product Search
+Analytics Service -> MongoDB: Save Product Search Filters
+Product Service -> Client: Return List of products
 ```
 
 * View product sequence diagram
-```mermaid
-sequenceDiagram
-Client ->> Product Service: Get product detail
-Product Service ->> Analytics Service: Record a View on Product
-Analytics Service ->> MongoDB: Save a View on Product
-Product Service ->> Client: Return Product Detail
+```seq
+Client -> Product Service: Get product detail
+Product Service -> Analytics Service: Record a View on Product
+Analytics Service -> MongoDB: Save a View on Product
+Product Service -> Client: Return Product Detail
 ```
 
 **Code folder structure**
