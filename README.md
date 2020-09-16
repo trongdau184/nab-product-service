@@ -60,6 +60,7 @@ npm test
 * View product sequence diagram
 
 **Code folder structure**
+```
 ├── api
 │   ├── common
 │   ├── config
@@ -89,6 +90,7 @@ npm test
 ├── plugins
 ├── server.ts
 └── test
+```
 
 **Software development principles, pattern & practices**
 * 3 Layers Pattern: Controler - Service - Repository
@@ -98,10 +100,10 @@ npm test
 
 **Frameworks & Libraries**
 * Hapi: NodeJS API framework
-* Boom: Generate Htpp friendly error objetcs
+* Boom: Generate Htpp friendly error objects
 * Good: Hapi process monitoring
 * hapi-auth-jwt2: hapi authentication plugin uses JWT token
-* Joi: reuqest payload or model validation
+* Joi: request payload or model validation
 * inversify: Inversion of control (IOC) container.
 * axios: send http request
 * mongoose: ODM for MongoDB 
@@ -154,4 +156,5 @@ curl -X DELETE "http://localhost:5000/products/5f619302f56b8419e5e45548" -H  "ac
 ```
 
 **Improvements**
-The User login/authenticate API should be seperated to the Idendity Service
+
+The User login/authenticate API should be separated to the Identity Service
