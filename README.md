@@ -104,6 +104,7 @@ The most benefit of micro-services architecture is ease of scaling, since the se
 * 3 Layers Pattern: Controller - Service - Repository
 * Inversion of control: make components loose coupling
 * Highly reusable: Quickly to add new Rest API for resource with basic CRUD. Developer just needs to create route file, define the new Controller, create new Service class which extends BaseService class without adding any code, create new Repository class which extends BaseRepository class without adding any code, and add needed validators, DTOs. That's all.
+* Generic Method
 * SOLID, KISS
 
 **Frameworks & Libraries**
@@ -113,8 +114,9 @@ The most benefit of micro-services architecture is ease of scaling, since the se
 * hapi-auth-jwt2: hapi authentication plugin uses JWT token
 * Joi: request payload or model validation
 * inversify: Inversion of control (IOC) container.
+* nconf: define configuration file for each environment
 * axios: send http request
-* mongoose: ODM for MongoDB 
+* mongoose: ODM for MongoDB
 * lodash: JavaScript utility library
 * hapi-swagger: API Documentation.
 * jest: unit test framework
