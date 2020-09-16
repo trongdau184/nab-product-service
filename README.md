@@ -29,7 +29,7 @@ npm test
             | ----------------- | ----------    |
             | eq                | equals        |
             | lt                | litter than   |
-            | lte               | little than or equal  |
+            | lte               | litter than or equal  |
             | gt                | greater than  |
             | gte               | greater than or equal |
             | ne                | not equal     |
